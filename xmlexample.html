@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>XML Parsing</title>
+</head>
+<body>
+    <h1></h1>
+    <button type="button" onclick="loadDoc()">Change content</button>
+    <div id="demo"></div>
+
+    <script>
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var xmlDoc = this.responseXML;
+
+                    // Extract the EmpId value from the XML
+                    var empId = xmlDoc.getElementsByTagName("EmpId")[0].childNodes[0].nodeValue;
+                    var firstName = xmlDoc.getElementsByTagName("FirstName")[0].childNodes[0].nodeValue;
+
+                    // Update the content with the extracted values
+                    document.getElementById("demo").innerHTML = "EmpId: " + empId + "<br>FirstName: " + firstName;
+                }
+            };
+            xhttp.open("GET", "company.xml", true); // Assuming the XML file is in the same directory
+            xhttp.send();
+        }
+    </script>
+</body>
+</html>

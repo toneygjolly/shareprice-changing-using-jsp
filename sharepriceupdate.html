@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>share price of tata</h1>
+<button id="b1" onclick="loadDataTata()">Click here</button>
+<label id="l1"></label>
+</h1>
+
+<h1>share price of BMW</h1>
+<button id="b2" onclick="loadDataBmw()">Click here</button>
+<label id="l2"></label>
+</h1>
+
+<h1>share price of RCOM</h1>
+<button id="b3" onclick="loadDataRcom()">Click here</button>
+<label id="l3"></label>
+</h1>
+
+<script type="text/javascript">
+function loadDataTata()
+{
+	var xhttp =new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState ==4 && this.status==200){
+			document.getElementById("l1").innerHTML=this.responseText;
+		}
+	};
+	xhttp.open("GET","http://localhost:8080/webpage2/share-price-update.jsp?compcode=1",true);
+	xhttp.send();
+	}
+	
+function loadDataBmw()
+{
+	var xhttp =new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState ==4 && this.status==200){
+			document.getElementById("l2").innerHTML=this.responseText;
+		}
+	};
+	xhttp.open("GET","http://localhost:8080/webpage2/share-price-update.jsp?compcode=2",true);
+	xhttp.send();
+	}	
+function loadDataRcom()
+{
+	var xhttp =new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState ==4 && this.status==200){
+			document.getElementById("l3").innerHTML=this.responseText;
+			
+		}
+	};
+	xhttp.open("GET","http://localhost:8080/webpage2/share-price-update.jsp?compcode=3",true);
+	xhttp.send();
+	}	
+
+
+</script>
+</body>
+</html>
